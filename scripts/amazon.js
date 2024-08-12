@@ -47,13 +47,42 @@ products.forEach((product) => {
           Added
         </div>
 
-        <button class="add-to-cart-button button-primary">
+        <button class="add-to-cart-button button-primary js-add-to-cart" 
+          data-product-name="${product.name}" data-product-id="${product.id}">
           Add to Cart
         </button>
      </div>
     `;
 });
 
-console.log(productsHTML);
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
+
+document.querySelectorAll('.js-add-to-cart').forEach((button) => {
+  button.addEventListener('click', () => {
+    // button.dataset sẽ trả về 1 object có dữ liệu của product
+    const productName = button.dataset.productName;
+    const productId = button.dataset.productId;
+
+    let matchingItem;
+
+    cart.forEach((item) => {
+      if (productId === item.productId) {
+        matchingItem = item;
+      }
+    });
+
+    if (matchingItem != undefined) {
+      matchingItem.quantity++;
+    }
+    else {
+      cart.push({
+        productId: productId,
+        quantity: 1
+      });
+    }
+
+    
+    console.log(cart);
+  });
+});

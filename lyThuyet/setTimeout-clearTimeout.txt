@@ -1,0 +1,14 @@
+(1)
+  console.log(1)
+  console.log(2)
+  console.log(3)... -> sẽ ra kq: 1, 2, 3... => Đây là đồng bộ (tuần tự)
+
+  setTimeout(() => {
+      console.log(4);
+  },2000)
+  console.log(5);
+  -> sẽ ra kq: 1, 2, 3, 5, 4 => Đây là bất đồng bộ => số 4 sẽ đc vào 1 hàng chờ ưu tiên thấp
+
+  ** Mặc dù chạy kh theo thứ tự nhưng cta có thể kiểm soát được.
+  ** Vì là ưu tiên thấp nên bđb được thực hiện sau, đb được thực hiện trc
+(1)

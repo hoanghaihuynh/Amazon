@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 //Body HTML
@@ -61,38 +61,6 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 let timeoutId;
 
-//1.Add to cart
-function addToCart(productId) {
-  let matchingItem;
-  //Quantity Selector
-  let quantitySelector = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
-  
-  cart.forEach((item) => {
-    if (productId === item.productId) {
-      matchingItem = item;
-    }
-  });
-
-  if (matchingItem != undefined) {
-    matchingItem.quantity += quantitySelector;
-  }
-  else {
-    cart.push({
-      productId: productId,
-      quantity: quantitySelector
-    });
-  }
-
-  //Added 2 giây (1)
-  let added = document.querySelector(`.data-product-id-${productId}`).classList.add('added');
-  clearTimeout(timeoutId);
-  timeoutId = setTimeout(() => {
-    document.querySelector(`.data-product-id-${productId}`).classList.remove('added');
-  } ,2000);
-
-}
-
-//2.Tăng số lượng item trong giỏ hàng
 function updateCartQuantity() {
   //Số lượng item trong giỏ hàng
   let cartQuantity = 0;

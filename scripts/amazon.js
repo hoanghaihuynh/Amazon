@@ -62,6 +62,9 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 let timeoutId;
 
+//Không cho function này vào cart.js là vì số lượng sp trong giỏ hàng 
+//Còn update trong cart nghĩa là thay đổi số lượng hàng trong cart
+// Đơn giản 1 cái là updateCartQuantity còn 1 cái là updateProductQuantity
 function updateCartQuantity() {
   //Số lượng item trong giỏ hàng
   let cartQuantity = 0;

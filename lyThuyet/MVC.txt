@@ -1,0 +1,8 @@
+Model:
+    SAVES and MANAGES the DATA
+
+View: 
+    TAKES the Data and DISPLAY on the Page
+
+Controller:
+    Runs code when we interact with the page. For exam: Các EventListener chính là Controller

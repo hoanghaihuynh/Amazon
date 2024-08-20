@@ -8,13 +8,11 @@ export function renderPaymentSummary() {
     let summaryShippingPrice = 0;
     let html = '';
     cart.forEach(cartItem => {
-        const productId = cartItem.productId;
-        const matchingProduct = getProduct(productId);
+        const matchingProduct = getProduct( cartItem.productId);
         const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId); 
-        const priceQuantityProduct = matchingProduct.priceCents * cartItem.quantity;
-        summaryPriceProduct += priceQuantityProduct;
-        const shippingPrice = deliveryOption.priceCents;
-        summaryShippingPrice += shippingPrice;
+
+        summaryPriceProduct += matchingProduct.priceCents * cartItem.quantity;
+        summaryShippingPrice += deliveryOption.priceCents;
     }); 
 
     const priceBeforeTax = summaryPriceProduct + summaryShippingPrice;

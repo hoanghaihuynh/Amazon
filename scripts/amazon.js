@@ -66,14 +66,14 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
 // Đơn giản 1 cái là updateCartQuantity còn 1 cái là updateProductQuantity
 function updateCartQuantity() {
   //Số lượng item trong giỏ hàng
-  let cartQuantity = 0;
-  cart.forEach((item) => {
-    cartQuantity += item.quantity;
-  });
-  
-  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-  
-  console.log(cart);  
+  let cartLength = cart.length;
+  // cart.forEach((item) => {
+  //   cartQuantity += item.quantity;
+  // });
+  if (cartLength === 0) {
+    cartLength = '';
+  }
+  document.querySelector('.js-cart-quantity').innerHTML = cartLength;
 }
 
 //Khi click vào button 'Add to cart'
@@ -84,3 +84,4 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     updateCartQuantity();
   });
 });
+updateCartQuantity();

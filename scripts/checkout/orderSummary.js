@@ -1,9 +1,11 @@
-import {cart, removeFromCart, updateDeliveryOption, updateCartItemQuantity} from '../../data/cart.js';
+import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';
 import {products, getProduct} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
 import { renderPaymentSummary } from './paymentSummary.js';
+import isSatSun from '../utils/date.js';
+import {renderCheckoutHeader} from './checkoutHeader.js';
 //1 file chỉ đc đặt 1 default export: VD bên money.js với function formatCurrency()
 // Còn với dayjs thì vs function dayjs()
 
@@ -102,9 +104,8 @@ export function renderOrderSummary() {
         link.addEventListener('click', () => {
             const productId = link.dataset.productId;
             removeFromCart(productId);
-            const container = document.querySelector(`.js-cart-item-container-${productId}`);
-            container.remove();
-			updateCartItemQuantity();
+			renderCheckoutHeader();
+            renderOrderSummary();
             renderPaymentSummary();
         })
     });
@@ -118,5 +119,5 @@ export function renderOrderSummary() {
             renderPaymentSummary();
         });
     });
-    // console.log(cartSummaryHTML);
+    
 }

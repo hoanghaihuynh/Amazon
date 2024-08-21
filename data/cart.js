@@ -79,13 +79,4 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
   saveToStorage();
 }
 
-//Update số lượng item trong card
-export function updateCartItemQuantity() {
-  let html = '';
-  html += `
-    <a class="return-to-home-link" href="amazon.html">
-      ${cart.length} items
-    </a>
-  `
-  document.querySelector('.return-to-home-link').innerHTML = html;
-}
+

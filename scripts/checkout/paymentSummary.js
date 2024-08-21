@@ -17,7 +17,6 @@ export function renderPaymentSummary() {
     const priceBeforeTax = summaryPriceProduct + summaryShippingPrice;
     const priceAfterTax = applyTax(priceBeforeTax);
     const orderTotal = priceBeforeTax + priceAfterTax;
-
     const html = `
         <div class="payment-summary js-payment-summary">
           <div class="payment-summary-title">
@@ -25,7 +24,7 @@ export function renderPaymentSummary() {
           </div>
 
           <div class="payment-summary-row">
-            <div>Items (3):</div>
+            <div>Items (${cart.length}):</div>
             <div class="payment-summary-money">$${formatCurrency(summaryPriceProduct)}</div>
           </div>
 

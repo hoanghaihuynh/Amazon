@@ -1,8 +1,8 @@
 Model:
-    SAVES and MANAGES the DATA
+    SAVES and MANAGES the DATA => Những dữ liệu, method trong file Data
 
 View: 
-    TAKES the Data and DISPLAY on the Page
+    TAKES the Data and DISPLAY on the Page FILE => Generate HTML
 
 Controller:
-    Runs code when we interact with the page. For exam: Các EventListener chính là Controller
+    Runs code when we interact with the page. For exam: Các EventListener chính là Controller 

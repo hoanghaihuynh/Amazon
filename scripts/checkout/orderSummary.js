@@ -102,10 +102,10 @@ export function renderOrderSummary() {
         link.addEventListener('click', () => {
             const productId = link.dataset.productId;
             removeFromCart(productId);
-			updateCartItemQuantity();
-            renderPaymentSummary();
             const container = document.querySelector(`.js-cart-item-container-${productId}`);
             container.remove();
+			updateCartItemQuantity();
+            renderPaymentSummary();
         })
     });
 

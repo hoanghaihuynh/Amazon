@@ -6,7 +6,6 @@ import {formatCurrency, applyTax, calculateMoneyAfterTax} from '../utils/money.j
 export function renderPaymentSummary() {
     let summaryPriceProduct = 0;
     let summaryShippingPrice = 0;
-    let html = '';
     cart.forEach(cartItem => {
         const matchingProduct = getProduct( cartItem.productId);
         const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId); 
@@ -19,8 +18,8 @@ export function renderPaymentSummary() {
     const priceAfterTax = applyTax(priceBeforeTax);
     const orderTotal = priceBeforeTax + priceAfterTax;
 
-    html += `
-        <div class="payment-summary">
+    const html = `
+        <div class="payment-summary js-payment-summary">
           <div class="payment-summary-title">
             Order Summary
           </div>
@@ -55,8 +54,7 @@ export function renderPaymentSummary() {
           </button>
         </div>
     `;
-    
-    document.querySelector('.payment-summary').innerHTML = html;
+    document.querySelector('.js-payment-summary').innerHTML = html;
 }
 
 

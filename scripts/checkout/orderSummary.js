@@ -2,7 +2,7 @@ import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';
 import {products, getProduct} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
-import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
+import {deliveryOptions, getDeliveryOption, calculateDeliveryDate} from '../../data/deliveryOptions.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 import isSatSun from '../utils/date.js';
 import {renderCheckoutHeader} from './checkoutHeader.js';
@@ -72,10 +72,8 @@ export function renderOrderSummary() {
     function deliveryOptionsHTML(matchingProduct, cartItem) {
         let deliveryOptionsHTML = '';
         deliveryOptions.forEach(deliveryOption => {
-            const today = dayjs();
-            const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
-            const dateString = deliveryDate.format('dddd, MMMM DD');
-
+            const dateString = calculateDeliveryDate(deliveryOption);
+            
             const priceString = (deliveryOption.priceCents === 0) ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} - `;
 
             const isChecked = (deliveryOption.id === cartItem.deliveryOptionId);

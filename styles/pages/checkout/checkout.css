@@ -32,6 +32,23 @@
   align-items: start;
 }
 
+/* Update, Save Button */
+.update-input {
+  width: 30px;
+}
+/* Before clicking Update => Input & Save hidden */
+.cart-item-container .update-input, .cart-item-container .save-quantity-link {
+  display: none;
+}
+/* After clicking Update 
+=> Input & Save appear, Update btutotn and quantity label hidden */
+.is-editing-quantity .update-input, .is-editing-quantity .save-quantity-link {
+  display: initial;
+}
+.is-editing-quantity .update-quantity-link, .is-editing-quantity .quantity-label {
+  display: none;
+}
+
 @media (max-width: 1000px) {
   .main {
     max-width: 500px;

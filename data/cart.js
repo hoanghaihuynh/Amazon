@@ -23,7 +23,7 @@ let timeoutId;
 export function addToCart(productId) {
     let matchingItem;
     //Quantity Selector
-    let quantitySelector = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
+    // let quantitySelector = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
     
     cart.forEach((cartItem) => {
       if (productId === cartItem.productId) {
@@ -32,25 +32,17 @@ export function addToCart(productId) {
     });
   
     if (matchingItem != undefined) {
-      matchingItem.quantity += quantitySelector;
+      matchingItem.quantity += 1;
     }
     else {
       cart.push({
         productId: productId,
-        quantity: quantitySelector,
+        quantity: 1,
         deliveryOptionId: '1'
       });
     }
   
     saveToStorage();
-
-    //Added 2 giây (1)
-    let added = document.querySelector(`.data-product-id-${productId}`).classList.add('added');
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      document.querySelector(`.data-product-id-${productId}`).classList.remove('added');
-    } ,2000);
-  
 }
 
 export function removeFromCart(productId) {

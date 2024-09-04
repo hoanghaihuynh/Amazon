@@ -45,17 +45,34 @@ class Clothing extends Product {
       this.sizeChartLink = productDetails.sizeChartLink;
     }
     //method này override/replace parent's method
-    extraInfoHTML() {
-      //Calls one of the parent method
-      // super.extraInfoHTML(); 
+    extraInfoHTML() { 
       return `
         <a href="${this.sizeChartLink}" target="_blank">
           Size chart
         </a>
-      `;
+      `; 
     }
 }
- 
+
+// const object2 = {
+//   a: 2,
+//   b: this.a
+// };
+
+// function logThis() {
+//   console.log(this);
+// }
+// logThis();
+// //call() sets the value of this
+// logThis.call('Hello');
+
+// this
+// const object3 = {
+//   method: () => {
+//     console.log(this);
+//   }
+// };
+// object3.method();
 
 export const products = [
   {
